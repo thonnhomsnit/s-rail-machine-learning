@@ -36,12 +36,6 @@ for a=1:3   %% 3-level tr
                 read = str2num(extractAfter(fscanf(fileID,' %c',20),'='));
                 mass(end+1,1) = (read*1000)-300;
                 fclose('all')
-                %%test
-                %disp(a);
-                %disp(b);
-                %disp(c);
-                %disp(d);
-                %%test
 
                 oldFolder = cd('D:\terminated_doe');
                 cd
