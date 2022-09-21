@@ -83,7 +83,7 @@ if ~isCellX
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%% transpose output, not original code %%%%%%%%%%%%
 Y=-1.*Y'; %%%% times -1 due to the minimizing ObjFn %%%%%
-Y(:,1)=-1.*Y(:,-1);
+Y(:,1)=-1.*Y(:,1);
 %%%%%%%%%%%%%%%%%%%%%%%%%% transpose output, not original code %%%%%%%%%%%%
 end
 
