@@ -19,5 +19,10 @@ row = sum(Rrank==1);
 paretofront = Rfit(1:row,:);
 optimalsolution = R(1:row,:);
 scatter(paretofront(:,1),paretofront(:,2),'b*','LineWidth',3);
+
+MCDMparam.SEA = 0.5;
+MCDMparam.IPF = 0.5;
+
+MCDM(paretofront,optimalsolution,MCDMparam);
 xlim([63 72])
 ylim([-2200 -1600])
