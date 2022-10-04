@@ -1,45 +1,27 @@
-function [COPRASsolution,COPRASindex] = MCDM(paretofront,optimalsolution,MCDMparam)
+function [COPRASsolution,COPRASindex] = MCDM(paretofront,MCDMparam)
 
-%parameter
-SEAweight = MCDMparam.SEA;
-IPFweight = MCDMparam.IPF;
+decisionmatrix = [paretofront(:,1) -1.*paretofront(:,2)];
 
-%COPRAS algo
-decisionmatrix = -1.*paretofront(:,2);
 sumcriteria = sum(decisionmatrix);
-normalizedecisionmatrix = [decisionmatrix(:,1)/sumcriteria(1,1) , decisionmatrix(:,2)/sumcriteria(1,2) ];
+normalizedecisionmatrix = [decisionmatrix(:,1)/sumcriteria(1,1) , decisionmatrix(:,2)/sumcriteria(1,2)];
 
-%weightcheck = SEAweight*(sum(normalizedecisionmatrix(:,1))) + CFEweight*(sum(normalizedecisionmatrix(:,2)));
+IPFweight = MCDMparam.IPF;
+SEAweight = MCDMparam.SEA;
+normIPFmat = normalizedecisionmatrix(:,1)*IPFweight;
+normSEAmat = normalizedecisionmatrix(:,2)*SEAweight;
 
-splus = SEAweight*normalizedecisionmatrix(:,1) + IPFweight*normalizedecisionmatrix(:,2);    
-%positive attribution e.g. EA, SEA, CFE
+negativeS = normIPFmat;
+positiveS = normSEAmat;
 
-%sminus = ?weight*normalizedecisionmatrix(:,?) + ?weight*normalizedecisionmatrix(:,?);      
-%negative attribution e.g. PCF,mass
+negativesum = sum(negativeS);
+negativefracsum= sum((1./negativeS));
 
-for i = 1:size(splus) 
- %    sminusmin = min(sminus); %constant
- %   sminussum = sum(sminus); %constant
- %  sminusfrac= sminusmin.*sum((1/sminus); %constant
-  Q(i,1) = splus(i,1); %+ ((sminusmin*sminussum)/(sminus(i)*sminusfrac));
+for i = 1:size(negativeS) 
+  Q(i,1) = positiveS(i) + ((negativesum)/(negativeS(i)*negativefracsum));
 end
 
-for i = 1:size(Q)
-    U(i,1) = Q(i,1)/max(Q);
-end
-
-%select 1st rank (U=1)
-COPRASindex = find(U == 1);
-COPRASsolution = optimalsolution(COPRASindex,:);
-COPRASfit = paretofront(COPRASindex,:);
-
+[maxQ,indexQ] = max(Q);
 scatter(paretofront(:,1),paretofront(:,2),'green'); hold on;
-scatter(COPRASfit(:,1),COPRASfit(:,2),200,'rp','filled'); 
-hold off;
-axis tight;
+scatter(paretofront(indexQ,1),paretofront(indexQ,2),200,'rp','filled');
 
-figure();
-scatter(paretofront(:,1),paretofront(:,2),'green'); hold on;
-%scatter(COPRASfit(:,1),COPRASfit(:,2),200,'rp','filled'); 
-hold off;
 end

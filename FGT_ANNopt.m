@@ -23,6 +23,6 @@ scatter(paretofront(:,1),paretofront(:,2),'b*','LineWidth',3);
 MCDMparam.SEA = 0.5;
 MCDMparam.IPF = 0.5;
 
-MCDM(paretofront,optimalsolution,MCDMparam);
+MCDM(paretofront,MCDMparam);
 xlim([63 72])
 ylim([-2200 -1600])
