@@ -48,7 +48,7 @@ params.maxgen = 100;     % Maximum number of generations
 params.ms = 0.05;       % Mutation strength
 
 % NSGA-II algorithm
-[R,Rfit,Rrank] = NSGAII(params,MultiObj);   
+[R,Rfit,Rrank,fitipf,fitsea,tr,A,L,T] = NSGAII(params,MultiObj);  
 row = sum(Rrank==1);
 paretofront = Rfit(1:row,:);
 optimalsolution = R(1:row,:);

@@ -38,7 +38,7 @@
 %        A fast and elitist multiobjective genetic algorithm: NSGA-II.    %
 %        IEEE transactions on evolutionary computation, 6(2), 182-197.    %
 % ----------------------------------------------------------------------- %
-function [R,Rfit,Rrank] = NSGAII(params,MultiObj)
+function [R,Rfit,Rrank,fitipf,fitsea,tr,A,L,T] = NSGAII(params,MultiObj)
 
     % Parameters
     Np      = params.Np;        % Number of chromosomes in the population
@@ -79,8 +79,8 @@ function [R,Rfit,Rrank] = NSGAII(params,MultiObj)
     
     % Main NSGA-II loop
     stopCondition = false;
+
     while ~stopCondition
-        
         % Merge the parent and the children
         R = [P; Q];
         
@@ -132,7 +132,13 @@ function [R,Rfit,Rrank] = NSGAII(params,MultiObj)
         % Increment generation
         gen = gen + 1;
         if(gen>maxgen), stopCondition = true; end
-    end
+        fitipf(:,gen) = Rfit(:,1); %%%edited%%%
+        fitsea(:,gen) = Rfit(:,2); %%%edited%%%
+        tr(:,gen) = R(:,1); %%%edited%%%
+        A(:,gen) = R(:,2); %%%edited%%%
+        L(:,gen) = R(:,3); %%%edited%%%
+        T(:,gen) = R(:,2); %%%edited%%%
+    end % end of while condition %
 end
 
 % Function that selects a new parent based on the crowding distance
