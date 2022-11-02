@@ -1,6 +1,6 @@
 close all;
 
-        MultiObj.fun = @tansig144;
+        MultiObj.fun = @tansig81;
         MultiObj.nVar = 4;
         MultiObj.var_min = [0 0 0 0];
         MultiObj.var_max = [1 1 1 1];
@@ -27,5 +27,3 @@ scatter(paretofront(:,1),paretofront(:,2),'b*','LineWidth',3);
 % MCDMparam.IPF = 0.5;
 % 
 % MCDM(paretofront,MCDMparam);
-xlim([55 60])
-ylim([-2350 -1800])
