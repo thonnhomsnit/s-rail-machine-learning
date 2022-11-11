@@ -81,7 +81,6 @@ load coeff.mat
         MultiObj.nVar = 4;
         MultiObj.var_min = [1 100 300 2];
         MultiObj.var_max = [3 160 500 5];
-%end
 
 % Parameters
 params.Np = 100;        % Population size

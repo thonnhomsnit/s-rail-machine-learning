@@ -4,7 +4,6 @@ close all;
         MultiObj.nVar = 4;
         MultiObj.var_min = [0 0 0 0];
         MultiObj.var_max = [1 1 1 1];
-%end
 
 % Parameters
 params.Np = 100;        % Population size
