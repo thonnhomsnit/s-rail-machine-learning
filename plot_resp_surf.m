@@ -10,10 +10,10 @@ x = 0.*ones(51);
 for row=1:51
     for column=1:51
         pred=[w(row,column);x(row,column);y(row,column);z(row,column)];
-        Y1 = ReLu(pred');
+        Y1 = new144poslin(pred');
         ipfpred1(row,column) = Y1(1,1);
         %seapred1(row,column) = Y1(1,2);
-        Y2 = tansig144(pred');
+        Y2 = new144tanh(pred');
         ipfpred2(row,column) = Y2(1,1);
         %seapred2(row,column) = Y2(1,2);
     end
@@ -71,9 +71,9 @@ ylabel('\itT\rm (mm)')
 zlabel('IPF (kN)')
 view(60,45)
 hold on;
-mesh(u,v,ANNIPF1,'FaceAlpha',0.5,'EdgeColor','#FFFFFF','FaceColor','#0072BD');
+mesh(u,v,ANNIPF1,'FaceAlpha',0.5,'EdgeColor','#FFFFFF','FaceColor','#0072BD'); % blue
 hold on;
-mesh(u,v,ANNIPF2,'FaceAlpha',0.5,'EdgeColor','#FFFFFF','FaceColor',"#77AC30");
+%mesh(u,v,ANNIPF2,'FaceAlpha',0.5,'EdgeColor','#FFFFFF','FaceColor',"#77AC30"); % green
 hold on;
 % zlim([0 200])
 % xlim([1 3])
