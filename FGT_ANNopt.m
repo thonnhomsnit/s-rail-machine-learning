@@ -1,6 +1,6 @@
 close all;
 
-        MultiObj.fun = @tansig81;
+        MultiObj.fun = @logsig81;
         MultiObj.nVar = 4;
         MultiObj.var_min = [0 0 0 0];
         MultiObj.var_max = [1 1 1 1];
@@ -17,8 +17,9 @@ params.ms = 0.05;       % Mutation strength
 row = sum(Rrank==1);
 paretofront = Rfit(1:row,:);
 optimalsolution = R(1:row,:);
+figure
 scatter(paretofront(:,1),paretofront(:,2),'b*','LineWidth',3);
-
+axis padded
 % paretofront(:,1) = paretofront(:,1).*(169.8391-37.1100)+37.1100;
 % paretofront(:,2) = paretofront(:,2).*(2435.1550-729.5885)+729.5885;
 
