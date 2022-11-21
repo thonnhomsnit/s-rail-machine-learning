@@ -79,11 +79,11 @@ hold on;
 % xlim([1 3])
 % ylim([100 160])
 
-plot3(u,v,cubicresp1,'r.','MarkerSize',10);
+plot3(u,v,cubicresp1,'r.','MarkerSize',1);
 hold on;
-plot3(u,v,ANNIPF1,'b.','MarkerSize',10);
+plot3(u,v,ANNIPF1,'b.','MarkerSize',1);
 hold on;
-plot3(u,v,ANNIPF2,'k.','MarkerSize',10);
+plot3(u,v,ANNIPF2,'k.','MarkerSize',1);
 hold on;
 
 clearvars j k u v w x y z;
