@@ -1,6 +1,6 @@
 close all;
 
-        MultiObj.fun = @logsig81;
+        MultiObj.fun = @tansig81;
         MultiObj.nVar = 4;
         MultiObj.var_min = [0 0 0 0];
         MultiObj.var_max = [1 1 1 1];
@@ -23,7 +23,7 @@ axis padded
 % paretofront(:,1) = paretofront(:,1).*(169.8391-37.1100)+37.1100;
 % paretofront(:,2) = paretofront(:,2).*(2435.1550-729.5885)+729.5885;
 
-% MCDMparam.SEA = 0.5;
-% MCDMparam.IPF = 0.5;
-% 
-% MCDM(paretofront,MCDMparam);
+MCDMparam.SEA = 0.5;
+MCDMparam.IPF = 0.5;
+
+MCDM(paretofront,MCDMparam);
