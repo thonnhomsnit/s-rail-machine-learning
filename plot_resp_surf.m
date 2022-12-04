@@ -1,6 +1,8 @@
-[u,v]=meshgrid(300:10:500,2:0.15:5);
-x1 = 2.*ones(21)           %TR
-x2 = 160.*ones(21)            %A
+data = datatable81
+
+[j,k]=meshgrid(0:0.05:1,1:0.05:1);
+x1 = 0.*ones(21)           %TR
+x2 = 0.*ones(21)            %A
 x3 = u      %T
 x4 = v      %L
 
@@ -40,6 +42,7 @@ responsesurf2 = ( ...
     +c(15) ...
     );
 
+[u,v]=meshgrid(300:10:500,2:0.15:5);
 mesh(u,v,responsesurf2,'FaceAlpha',0.2,'EdgeColor','k','FaceColor','b','EdgeAlpha',1);
 grid on;
 box on;
@@ -52,7 +55,7 @@ set(gca, 'FontName', 'Times New Roman','FontSize',14,'FontSmoothing', ...
 xlabel('\itL\rm (mm)');
 ylabel('\itT\rm (mm)')
 zlabel('SEA (J/kg)')
-zlim([500 2500])
+zlim([60 180])
 view(60,15)
 hold on;
 
