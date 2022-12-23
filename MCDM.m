@@ -21,7 +21,7 @@ for i = 1:size(negativeS)
 end
 
 [maxQ,indexQ] = max(Q);
-scatter(paretofront(:,1),paretofront(:,2),'green'); hold on;
+scatter(paretofront(:,1),paretofront(:,2),'blue'); hold on;
 scatter(paretofront(indexQ,1),paretofront(indexQ,2),200,'rp','filled');
 
 end
