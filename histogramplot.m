@@ -1,5 +1,5 @@
 edges = [-250:25:250];
-myerror = error(:,4)
+%myerror = error(:,4)
 % h = histogram(myerror,edges,'Normalization','probability');
 % line([-50, -50], ylim, 'LineWidth', 2, 'Color', 'b');
 % line([50, 50], ylim, 'LineWidth', 2, 'Color', 'b');
