@@ -80,6 +80,7 @@ Y(:,1)=-1.*Y(:,1);
 end
 
 % ===== MODULE FUNCTIONS ========
+
 % Linear Positive Transfer Function
 function a = poslin_apply(n,~)
   a = max(0,n);
