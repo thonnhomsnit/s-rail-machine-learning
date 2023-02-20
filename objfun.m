@@ -1,31 +1,31 @@
-mat =  [0.5 0.5 0.5 0.5; 0 0 0 0; 0.1 0.1 0.1 0.1];
+mat =  [1.2 140 400 4.5;1.2 140 400 2.5; 2 120 300 3.5];
 answer = objfun(mat);
+load avgdisp.mat
 
 function [Y] = objfun(x)
-annipfsea = tansig81(x);
+annipfsea = poslin81(x);
 annipf = annipfsea(:,1);
 mass = ANNmass(x);
 
 ea = lstm(x); % get ea from lstm prediction
 
-lstmsea = -lstm./mass;
+lstmsea = -ea./mass;
 Y = [annipf lstmsea];
 end
 
 function [ea] = lstm(x)
 load avgdisp.mat
-    for i = size(x,1)
-        csvwrite('pythoninput.csv', x(i,:));
-        system('C:\Users\Personal\Documents\GitHub\lstm_srail\dist\testmatlab\testmatlab.exe'); % run the executable file
-        force = csvread('pythonoutput.csv');
+for i = 1:3
+    input = [0 0 0 0;x(i,:)];
+    csvwrite('matlabinput.csv', input);
+    system('C:\Users\Personal\Documents\GitHub\optimization-execution\dist\lstm.exe'); % run the executable file
+    force = csvread('pythonoutput.csv');
+    disp = disp;
+    delta_disp = [disp; 0]-[0; disp];
+    sum_force = [force; 0]+[0; force];
 
-        delta_disp = [disp; 0]-[0; disp];
-        sum_force = [force; 0]+[0; force];
-
-        % find last index that have disp < 260 mm
-        [row] = find(disp<260, 1, 'last');
-        area = 0.5.*([disp; 0]-[0; disp]).*([force; 0]+[0; force]);
-        area = area(1:row);
-        ea(i,1) = sum(area);
-    end
+    [row] = find(disp<260, 1, 'last');
+    area = 0.5.*(delta_disp(1:row,1)).*(sum_force(1:row,1));
+    ea(i,1) = sum(area);
+end
 end
