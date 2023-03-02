@@ -63,17 +63,18 @@ function [R,Rfit,Rrank,fitipf,fitsea,tr,A,L,T] = NSGAII(params,MultiObj)
     if(size(Pfit,2) == 2)
         h_fig = figure(1);
         h_par=scatter(Pfit(:,1),Pfit(:,2),20,'filled', 'markerFaceAlpha',0.3,'MarkerFaceColor',[128 193 219]./255); hold on;
-        h_rep = plot(Pfit(:,1),Pfit(:,2),'ok'); hold on;
+        h_rep = plot(Pfit(:,1),Pfit(:,2),'.k'); hold on;
         grid on; xlabel('f1'); ylabel('f2');
         drawnow;
         axis square;
     end
     if(size(Pfit,2) == 3)
         h_fig = figure(1);
-        h_rep = plot3(Pfit(:,1),Pfit(:,2),Pfit(:,3),'ok'); hold on;
+        h_rep = plot3(Pfit(:,1),Pfit(:,2),Pfit(:,3),'.k'); hold on;
         grid on; xlabel('f1'); ylabel('f2'); zlabel('f3');
         drawnow;
         axis square;
+        hold on;
     end
     display(['Generation #' num2str(gen) ' - First front size: ' num2str(sum(Prank==1))]);
     
@@ -137,7 +138,7 @@ function [R,Rfit,Rrank,fitipf,fitsea,tr,A,L,T] = NSGAII(params,MultiObj)
         tr(:,gen) = R(:,1); %%%edited%%%
         A(:,gen) = R(:,2); %%%edited%%%
         L(:,gen) = R(:,3); %%%edited%%%
-        T(:,gen) = R(:,2); %%%edited%%%
+        T(:,gen) = R(:,4); %%%edited%%%
     end % end of while condition %
 end
 

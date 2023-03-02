@@ -72,10 +72,10 @@ if ~isCellX
   Y = cell2mat(Y);
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%% transpose output, not original code %%%%%%%%%%%%
-Y(1,:)= ((Y(1,:))*(163.2073517-65.22771454))+65.22771454; %IPF
-Y(2,:)= ((Y(2,:))*(2217.028012-729.5885))+729.5885; %SEA
-Y=-1.*Y'; %%%% times -1 due to the minimizing ObjFn %%%%%
-Y(:,1)=-1.*Y(:,1);
+%Y(1,:)= ((Y(1,:))*(163.2073517-65.22771454))+65.22771454; %IPF
+Y= ((Y(2,:))*(2217.028012-729.5885))+729.5885; %SEA
+%Y=-1.*Y'; %%%% times -1 due to the minimizing ObjFn %%%%%
+%Y(:,1)=-1.*Y(:,1);
 %%%%%%%%%%%%%%%%%%%%%%%%%% transpose output, not original code %%%%%%%%%%%%
 end
 
