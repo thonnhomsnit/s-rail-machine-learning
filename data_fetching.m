@@ -3,7 +3,7 @@ disp = zeros(1000,81);
 force = zeros(1000,81);
 energy = zeros(1000,81);
 
-for i=1:81
+for i=109:144
 fdfile = append("fd",num2str(i),".csv");
 edfile = append("ed",num2str(i),".csv");
 fd = readmatrix(fdfile);
@@ -12,16 +12,16 @@ disp(:,i) = fd(:,1);
 force(:,i) = fd(:,2);
 energy(:,i) = ed(:,2);
 end
-
+%%
 cd 'D:\terminated_doe' 
-tr = [1 1.5 2];
-section = [120 140 160];
+tr = [1 1.5 2 3];
+section = [100 120 140 160];
 l = [300 400 500];
 thick = [2 3.5 5];
 mass=[0];
 
 for a=1:3   %% 3-level tr
-    for b=1:3 %% 3-level section
+    for b=1 %% 3-level section
         for c=1:3 %% 3-level l
             for d=1:3 %% 3-level thick
                 path = append('tr',num2str(tr(a)),'-',num2str(section(b)),'-',num2str(l(c)),'-',num2str(thick(d)));

@@ -7,8 +7,10 @@ edges = [-250:25:250];
 %hval=h.Values
 %prob=hval(10)+hval(11)
 histfit(myerror,10,'normal')
-pd = fitdist(myerror,'Normal')
-xlim([-10 10])
-ylim([0 30])
+pd = fitdist(myerror,'Normal');
+xlabel('Error (kJ)')
+ylabel('Frequency')
+xlim([-2 2])
+ylim([0 45])
 % xticks([-1 1])
 line([0, 0], ylim, 'LineWidth', 2, 'Color', 'k');

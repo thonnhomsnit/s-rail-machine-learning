@@ -3,23 +3,24 @@ A = [100 120 140 160];
 L = [300 400 500];
 T = [2 3.5 5];
 col = 1;
-for a = 4
-    for b = 4
-        for c = 1
+
+for a = 1:3
+    for b = 1
+        for c = 1:3
             for d = 1:3
-forcename = ['D:\terminated_doe\fix\tr',num2str(tr(1,a)),'-',num2str(A(1,b)),'-',num2str(L(1,c)),'-',num2str(T(1,d)),'\rwforc'];
+forcename = ['D:\terminated_doe\tr',num2str(tr(1,a)),'-',num2str(A(1,b)),'-',num2str(L(1,c)),'-',num2str(T(1,d)),'\rwforc'];
 [rwforc,n] = fetch_force(forcename);
 forcetimestep(1:n,col) = rwforc;
 
-dispname = ['D:\terminated_doe\fix\tr',num2str(tr(1,a)),'-',num2str(A(1,b)),'-',num2str(L(1,c)),'-',num2str(T(1,d)),'\nodout'];
+dispname = ['D:\terminated_doe\tr',num2str(tr(1,a)),'-',num2str(A(1,b)),'-',num2str(L(1,c)),'-',num2str(T(1,d)),'\nodout'];
 [nodout,n] = fetch_disp(dispname);
 disptimestep(1:n,col) = nodout;
 
-energyname = ['D:\terminated_doe\fix\tr',num2str(tr(1,a)),'-',num2str(A(1,b)),'-',num2str(L(1,c)),'-',num2str(T(1,d)),'\glstat'];
+energyname = ['D:\terminated_doe\tr',num2str(tr(1,a)),'-',num2str(A(1,b)),'-',num2str(L(1,c)),'-',num2str(T(1,d)),'\glstat'];
 [glstat,n] = fetch_energy(energyname);
 energytimestep(1:n,col) = glstat;
 
-massname = ['D:\terminated_doe\fix\tr',num2str(tr(1,a)),'-',num2str(A(1,b)),'-',num2str(L(1,c)),'-',num2str(T(1,d)),'\d3hsp'];
+massname = ['D:\terminated_doe\tr',num2str(tr(1,a)),'-',num2str(A(1,b)),'-',num2str(L(1,c)),'-',num2str(T(1,d)),'\d3hsp'];
 [d3hsp] = fetch_mass(massname);
 mass(1,col) = d3hsp;
 
@@ -77,7 +78,7 @@ filename = dispname;
 nod = readtable(filename, opts);
 nod = table2array(nod);
 
- for j = 1:200
+ for j = 1:500
      line = 1+14*j;
      fetch(j,1) = nod(line,1);
  end
